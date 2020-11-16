@@ -4,6 +4,7 @@ import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
 
 /**
  * @ClassName MainFrame
@@ -20,6 +21,7 @@ public class MainFrame extends JFrame {
     }
 
     public MainFrame() throws HeadlessException {
+        JTextArea taDown = MainPanel.getInstance().getTaDown();
         this.setTitle("MyList 解释器");
         this.setLayout(new BorderLayout());
         this.setBounds(new Rectangle(200,200,500,500));
@@ -27,6 +29,12 @@ public class MainFrame extends JFrame {
 
         this.setContentPane(MainPanel.getInstance());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //设置默认焦点
+        // taDown.dispatchEvent(new FocusEvent(taDown,FocusEvent.FOCUS_GAINED,true));
+        // taDown.requestFocusInWindow();
+
+
         //设置为不可变大小
         this.setResizable(false);
         this.setVisible(true);

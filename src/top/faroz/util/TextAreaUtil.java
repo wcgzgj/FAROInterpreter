@@ -16,6 +16,8 @@ import java.util.List;
 public class TextAreaUtil {
     /**
      * 获取JTextArea中的最后一行的文字
+     * 因为修改了输入方式
+     * 所以这个函数应该没有什么用了
      * @param str
      * @return
      */
@@ -28,37 +30,16 @@ public class TextAreaUtil {
         return split[split.length-1];
     }
 
-    public static void analyseInstruction(String ins) {
-        MainPanel mainPanel = MainPanel.getInstance();
-        JTextArea taUp = mainPanel.taUp;
-        switch (ins) {
-            case "cls":
-                taUp.setText("");
-                break;
-            case "help":
-                appendToTaUp(FileUtil.readFIle("help"));
-                break;
-            case "copyright":
-                appendToTaUp(FileUtil.readFIle("copyright"));
-                break;
-            case "format":
-                appendToTaUp(FileUtil.readFIle("format"));
-                break;
-            default:
-                taUp.append("\n     error , please input \"help\"\n" +
-                        "     to read standard input format");
-                break;
-        }
-    }
 
-    public static void analyseFunction(String func) {
-
-    }
-
+    /**
+     * 将 List按照既定格式，输出到taUp上
+     * @param list
+     */
     public static void appendToTaUp(List<String> list) {
         JTextArea taUp = MainPanel.getInstance().getTaUp();
         for (String s : list) {
             taUp.append(s+"\n");
         }
     }
+
 }

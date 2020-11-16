@@ -1,6 +1,7 @@
 package top.faroz.gui.listener;
 
 import top.faroz.gui.panel.MainPanel;
+import top.faroz.service.InstructionAnalyse;
 import top.faroz.util.TextAreaUtil;
 
 import javax.swing.*;
@@ -35,24 +36,25 @@ public class TextAreaListener implements KeyListener {
         JTextArea taUp = mainPanel.getTaUp();
         int code = e.getKeyCode();
 
-
         switch (code) {
             //回车键
             case 10:
-                //首先要将输入框中的换行符给取出了
-                String text = taDown.getText();
-                text=text.replaceAll("\n","");
+                String text = taDown
+                        .getText() //获取文本
+                        .replaceAll("\n","") //去除换行符
+                        .trim(); //去除开头、结尾的空格
 
 
-                //输出用户输入的指令
+                //显示用户输入的指令
                 taUp.append("\n > "+text);
-                //处理指令或者文字
+
+                //处理指令或者函数
                 //并对用户的输入做出相应
-                TextAreaUtil.analyseInstruction(text);
+                InstructionAnalyse.analyseInstruction(text);
+
                 //每次输入完后，taUp的光标置于最底下
                 //通过这种方式，实现JTextArea每次显示最下面一行的内容
                 taUp.setCaretPosition(taUp.getDocument().getLength());
-
 
                 //清空输入框
                 taDown.setText("");
