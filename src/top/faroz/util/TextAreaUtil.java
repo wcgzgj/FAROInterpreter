@@ -1,6 +1,10 @@
 package top.faroz.util;
 
 import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
+import top.faroz.gui.panel.MainPanel;
+
+import javax.swing.*;
+import java.util.List;
 
 /**
  * @ClassName TextAreaUtil
@@ -22,5 +26,39 @@ public class TextAreaUtil {
             split[i]=split[i].trim();
         }
         return split[split.length-1];
+    }
+
+    public static void analyseInstruction(String ins) {
+        MainPanel mainPanel = MainPanel.getInstance();
+        JTextArea taUp = mainPanel.taUp;
+        switch (ins) {
+            case "cls":
+                taUp.setText("");
+                break;
+            case "help":
+                appendToTaUp(FileUtil.readFIle("help"));
+                break;
+            case "copyright":
+                appendToTaUp(FileUtil.readFIle("copyright"));
+                break;
+            case "format":
+                appendToTaUp(FileUtil.readFIle("format"));
+                break;
+            default:
+                taUp.append("\n     error , please input \"help\"\n" +
+                        "     to read standard input format");
+                break;
+        }
+    }
+
+    public static void analyseFunction(String func) {
+
+    }
+
+    public static void appendToTaUp(List<String> list) {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        for (String s : list) {
+            taUp.append(s+"\n");
+        }
     }
 }

@@ -35,7 +35,9 @@ public class MainPanel extends JPanel {
 
 
         this.setLayout(new BorderLayout());
+        //字体设置为白色
         taUp.setForeground(Color.WHITE);
+        //光标设置为白色
         taUp.setCaretColor(Color.WHITE);
         taUp.setFont(font);
         //将文本域设为灰色，以模仿Bash的风格
@@ -55,15 +57,18 @@ public class MainPanel extends JPanel {
         this.add(spDown,BorderLayout.SOUTH);
 
         taDown.setPreferredSize(new Dimension(500,100));
-
-
-
-        //增加键盘监听
+        /**
+         * 为输入框增加键盘监听
+         */
         taDown.addKeyListener(new TextAreaListener());
 
     }
 
-    public JTextArea getTextArea() {
+    public JTextArea getTaDown() {
         return taDown;
+    }
+
+    public JTextArea getTaUp() {
+        return taUp;
     }
 }
