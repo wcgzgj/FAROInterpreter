@@ -1,5 +1,7 @@
 package top.faroz.gui.frame;
 
+import top.faroz.gui.panel.MainPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,6 +22,13 @@ public class MainFrame extends JFrame {
     public MainFrame() throws HeadlessException {
         this.setTitle("MyList 解释器");
         this.setLayout(new BorderLayout());
-        // this.setBounds();
+        this.setBounds(new Rectangle(200,200,500,500));
+
+
+        this.setContentPane(MainPanel.getInstance());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //设置为不可变大小
+        this.setResizable(false);
+        this.setVisible(true);
     }
 }

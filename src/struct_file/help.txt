@@ -1,0 +1,4 @@
+help meun:
+
+- cls :清屏
+- =
