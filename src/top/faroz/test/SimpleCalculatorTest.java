@@ -1,6 +1,6 @@
 package top.faroz.test;
 
-import top.faroz.util.NumUtil;
+import top.faroz.util.WordUtil;
 import top.faroz.util.Stack;
 
 /**
@@ -28,13 +28,13 @@ public class SimpleCalculatorTest {
 
             String stringAtI = String.valueOf(s.charAt(i));
             //如果是数字
-            if (NumUtil.isNum(stringAtI)) {
+            if (WordUtil.isNum(stringAtI)) {
                 num=num*10+Integer.parseInt(stringAtI);
             }
             //如果遇到运算符
             //之前的数字和符号就要存进栈中
             //&& tmp!=" " 是为了保证不会判断空格
-            if ( (!NumUtil.isNum(stringAtI) && stringAtI!=" " &&
+            if ( (!WordUtil.isNum(stringAtI) && stringAtI!=" " &&
                     !"(".equals(stringAtI) && !")".equals(stringAtI) )|| i==s.length()-1) {
                 switch (sign) {
                     case "+":

@@ -1,15 +1,9 @@
 package top.faroz.gui.listener;
 
 import top.faroz.gui.panel.MainPanel;
-import top.faroz.service.InstructionAnalyse;
-import top.faroz.util.TextAreaUtil;
+import top.faroz.service.Analyse;
 
 import javax.swing.*;
-import javax.swing.plaf.TableUI;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -50,7 +44,7 @@ public class TextAreaListener implements KeyListener {
 
                 //处理指令或者函数
                 //并对用户的输入做出相应
-                InstructionAnalyse.analyseInstruction(text);
+                Analyse.analyseInstruction(text);
 
                 //每次输入完后，taUp的光标置于最底下
                 //通过这种方式，实现JTextArea每次显示最下面一行的内容

@@ -15,7 +15,7 @@ import java.util.Map;
  * @Version 1.0
  **/
 public class NumCache {
-    private static HashMap<String,Integer> map=new HashMap<>();
+    private static HashMap<String,Float> map=new HashMap<>();
 
     /**
      * 更新键值对
@@ -24,7 +24,7 @@ public class NumCache {
      * @param k
      * @param v
      */
-    public static void update(String k,Integer v) {
+    public static void update(String k,Float v) {
         if (map.containsKey(k)) map.replace(k,v);
         else map.put(k,v);
     }

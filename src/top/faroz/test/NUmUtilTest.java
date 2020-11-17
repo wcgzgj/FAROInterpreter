@@ -1,6 +1,6 @@
 package top.faroz.test;
 
-import top.faroz.util.NumUtil;
+import top.faroz.util.WordUtil;
 
 /**
  * @ClassName NUmUtilTest
@@ -11,8 +11,8 @@ import top.faroz.util.NumUtil;
  **/
 public class NUmUtilTest {
     public static void main(String[] args) {
-        System.out.println(NumUtil.isNum("a"));
-        System.out.println(NumUtil.isNum("1"));
-        System.out.println(NumUtil.isNum("2"));
+        System.out.println(WordUtil.isNum("a"));
+        System.out.println(WordUtil.isNum("1"));
+        System.out.println(WordUtil.isNum("2"));
     }
 }
