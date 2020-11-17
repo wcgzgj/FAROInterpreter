@@ -17,7 +17,7 @@ public class FileUtil {
      * @param name
      * @return
      */
-    public static List<String> readFIle(String name) {
+    public static List<String> readFile(String name) {
         String fileName = "src/instruction_file/" + name+".txt";
         List<String> list = new ArrayList<>();
         File file = new File(fileName);

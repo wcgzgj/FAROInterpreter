@@ -28,13 +28,15 @@ public class InstructionAnalyse {
                     taUp.setText("");
                     break;
                 case "help":
-                    TextAreaUtil.appendToTaUp(FileUtil.readFIle("help"));
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("help"));
                     break;
                 case "copyright":
-                    TextAreaUtil.appendToTaUp(FileUtil.readFIle("copyright"));
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("copyright"));
                     break;
                 case "format":
-                    TextAreaUtil.appendToTaUp(FileUtil.readFIle("format"));
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("format"));
+                    break;
+                case "":
                     break;
                 default:
                     taUp.append("\n     error , please input \"help\"\n" +
@@ -52,6 +54,7 @@ public class InstructionAnalyse {
      * @param func
      */
     private static void analyseFunction(String func) {
+        // if ()
 
     }
 
@@ -63,6 +66,20 @@ public class InstructionAnalyse {
     public static boolean isBasicInstruction(String s) {
         //指令集中不会出现空格和括号
         if (s.indexOf(" ")!=-1 || s.indexOf("(")!=-1 || s.indexOf(")")!=-1) return false;
+        return true;
+    }
+
+    /**
+     * 通过前、后 是不是括号，粗略判断是不是函数
+     * @param s
+     * @return
+     */
+    public static boolean isFunc(String s) {
+        if (s.length()<=2) return false;
+        String head = String.valueOf(s.charAt(0));
+        s.charAt(s.length()-1);
+
+
         return true;
     }
 }
