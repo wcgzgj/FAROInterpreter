@@ -1,6 +1,8 @@
 package top.faroz.service;
 
 import sun.security.provider.certpath.SunCertPathBuilder;
+import top.faroz.util.ParserUtil;
+import top.faroz.util.TextAreaUtil;
 
 /**
  * @ClassName FunctionCalculate
@@ -12,20 +14,16 @@ import sun.security.provider.certpath.SunCertPathBuilder;
  * @Version 1.0
  **/
 public class Parser {
-
     /**
-     * 我发现，传统的方法根本行不通
-     * 需要去系统的学习一下解释器的原理
-     *
-     * ！！！！
-     * @param func
-     * @return
+     * 解释器要实现两个基本功能：
+     *  1. 赋值  -> 需要借助额外的数据空间   model.numCache
+     *  2. 计算  -> 需要借助栈或者其他数据结构
      */
+    //(:= a 3)
+    public static void parseFunc(String func) {
+        //创建字符流
+        String[] strs = ParserUtil.toToken(func);
 
-    //need to change
-    public static int parseFunc(String func) {
 
-
-        return 1;
     }
 }

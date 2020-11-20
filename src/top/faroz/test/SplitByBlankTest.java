@@ -18,6 +18,7 @@ public class SplitByBlankTest {
 
         String s2 = "(a+b)";
         s2=s2.replaceAll("\\("," * ");
+        System.out.println(s2);
 
 
     }

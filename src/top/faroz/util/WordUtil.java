@@ -1,5 +1,7 @@
 package top.faroz.util;
 
+import com.singularsys.jep.functions.Str;
+
 import java.io.PushbackInputStream;
 import java.util.HashSet;
 
@@ -14,6 +16,7 @@ public class WordUtil {
     static String nums="0123456789";
     static String alps="abcdefghijklmnopqrstuvwxvz" +
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static String operators="+-*/=";
 
     /**
      * 判断该字符串是不是数字
@@ -32,5 +35,9 @@ public class WordUtil {
      */
     public static boolean isAlp(String s) {
         return alps.contains(s);
+    }
+
+    public static boolean isOperator(String s) {
+        return operators.contains(s);
     }
 }

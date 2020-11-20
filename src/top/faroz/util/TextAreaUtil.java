@@ -1,6 +1,7 @@
 package top.faroz.util;
 
 import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
+import sun.applet.Main;
 import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
@@ -40,6 +41,21 @@ public class TextAreaUtil {
         for (String s : list) {
             taUp.append(s+"\n");
         }
+    }
+
+    /**
+     * 向输出框中显示，函数输入格式错误
+     */
+    public static void functionFormatError() {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        taUp.append("\n     错误 , 函数输入错误\n" +
+                "     请输入 \"help\"，阅读标准 函数 输入格式手册");
+    }
+
+    public static void instructionFormatError() {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        taUp.append("\n     错误 , 请输入 \"help\"\n" +
+                "     阅读标准输入格式手册");
     }
 
 }

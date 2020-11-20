@@ -3,8 +3,10 @@ package top.faroz.service;
 import top.faroz.gui.panel.MainPanel;
 import top.faroz.util.FileUtil;
 import top.faroz.util.TextAreaUtil;
+import top.faroz.util.WordUtil;
 
 import javax.swing.*;
+import javax.xml.soap.Text;
 
 /**
  * @ClassName InstructionAnalyse
@@ -39,8 +41,7 @@ public class Analyse {
                 case "":
                     break;
                 default:
-                    taUp.append("\n     错误 , 请输入 \"help\"\n" +
-                            "     阅读标准输入格式手册");
+                    TextAreaUtil.instructionFormatError();
                     break;
             }
         } else { //否则就按照函数进行判断
@@ -56,18 +57,22 @@ public class Analyse {
     private static void analyseFunction(String func) {
         JTextArea taUp = MainPanel.getInstance().getTaUp();
         if (!isFunc(func)) {
-            taUp.append("\n     错误 , 函数输入错误\n" +
-                    "     请输入 \"help\"，阅读标准 函数 输入格式手册");
+            TextAreaUtil.functionFormatError();
+            return;
         }
+
+
         /**
          * 经过筛选后的函数，保证输入的函数
          * 头尾是左右括号
          * 头后面的第一个字符保证是 基本运算符  (=) (+) (-) ...
+         *
+         * 判定基本是函数的格式以后，调用函数解释器
+         *
+         * 解释器计算后的结果，直接通过调用JTextArea的单例，进行显示的改变
+         * 所以不需要再额外传出数据
          */
         Parser.parseFunc(func);
-
-
-
     }
 
     /**
@@ -107,21 +112,7 @@ public class Analyse {
 
         //最后通过第一个字符是不是基本运算符，来敲定是不是函数
         String CountInstruction = String.valueOf(s.charAt(0));
-        return isCountInstruction(CountInstruction);
+        return WordUtil.isOperator(CountInstruction);
     }
 
-    /**
-     * 判断是否是基本运算符号
-     * @param ins
-     * @return
-     */
-    public static boolean isCountInstruction(String ins) {
-        if ("=".equals(ins) ||
-                "+".equals(ins) ||
-                "-".equals(ins) ||
-                "*".equals(ins) ||
-                "/".equals(ins) )
-            return true;
-        return false;
-    }
 }
