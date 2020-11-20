@@ -31,6 +31,7 @@ public class ParserUtil {
 
         //要将字符串中所有这些字符，全部带上前后空格
         //方便使用split函数进行分割
+        //这里在匹配的时候，需要进行转义，不然会报错
         String []blocks={"\\+","\\-","\\*","\\/","\\=","\\(","\\)"};
 
         for (String block : blocks) {
@@ -43,8 +44,7 @@ public class ParserUtil {
 
         //调用split函数，进行分割
         //要注意忽略空格的个数（使用正则表达式实现）
-        String[] split = str.split("\\s+");
-        return split;
+        return str.split("\\s+");
     }
 
 
@@ -78,28 +78,30 @@ public class ParserUtil {
     /**
      * 递归构建语法树的枝
      * @param strs token流
-     * @param l_start 左子树开始
-     * @param l_end 左子树结束
+     * @param start 左子树开始
+     * @param end 左子树结束
      * @return
      */
-    private static TreeNode buildSubTree(String[] strs,int l_start,int l_end) {
+    private static TreeNode buildSubTree(String[] strs,int start,int end) {
+        //如果start==end 说明数据闭包是一个数或者变量
+        if (start==end) return new TreeNode(strs[start]);
         //等于的情况不可以排除，因为，数据包可能就是单个单词（而不是括号括起来的）
-        if (l_start>l_end) {//终止判断
+        if (start>end) {//终止判断
             return null;
         }
         //如果数据闭包是以括号区分的
-        if (strs[l_start].equals("(")) {
-            l_start++;
-            l_end--;
+        if (strs[start].equals("(") && strs[end].equals(")")) {
+            start++;
+            end--;
         }
-        if (l_start>l_end) return null;
+        if (start>end) return null;
 
-        //处理完后，如果token正确,l_start应该是运算符
+        //处理完后，如果token正确,start应该是运算符
         //这里就默认当做运算符来操作
-        TreeNode root = new TreeNode(strs[l_start]);
+        TreeNode root = new TreeNode(strs[start]);
 
         //第一个数据集闭包
-        Pair pair1 = getNextUnion(strs, l_start);
+        Pair pair1 = getNextUnion(strs, start);
         if (pair1==null) return null;//防止空指针异常
         //第二个数据集闭包
         Pair pair2 = getNextUnion(strs, pair1.x2);

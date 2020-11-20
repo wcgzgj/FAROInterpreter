@@ -14,7 +14,9 @@ import top.faroz.util.TreeUtil;
  **/
 public class BuildWordTreeTest {
     public static void main(String[] args) {
-        String str = "(+(*b 2)(/4 a))";
+        // String str = "(+(*b 2)(/4 a))";  正确
+        // String str = "(=a (*b (+ 6 3)))";  正确
+        String str = "(+b (%7 2)";
         String[] strs = ParserUtil.toToken(str);
         TreeNode treeNode = ParserUtil.buildTree(strs);
         TreeUtil.BFS(treeNode);
