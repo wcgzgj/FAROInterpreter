@@ -9,9 +9,13 @@ package top.faroz.domain;
  **/
 public class TreeNode {
     public String val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(String val) {
         this.val = val;
+        left=null;
+        right=null;
     }
 
     public String getVal() {

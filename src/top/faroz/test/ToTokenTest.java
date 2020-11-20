@@ -2,6 +2,8 @@ package top.faroz.test;
 
 import top.faroz.util.ParserUtil;
 
+import java.util.Arrays;
+
 /**
  * @ClassName ToTokenTest
  * @Description TODO
@@ -11,15 +13,9 @@ import top.faroz.util.ParserUtil;
  **/
 public class ToTokenTest {
     public static void main(String[] args) {
-        String str = "(+(* b 2)(/4 a))";
+        String str = "(+(* b 22)(/14 a))";
         String[] strings = ParserUtil.toToken(str);
-        for (String string : strings) {
-            System.out.println(string);
-        }
-        for (String string : strings) {
-            if (string.equals("(")) {
-                System.out.println("hahaha");
-            }
-        }
+        System.out.println(Arrays.toString(strings));
+
     }
 }

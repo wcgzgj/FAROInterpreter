@@ -1,6 +1,7 @@
 package top.faroz.service;
 
 import sun.security.provider.certpath.SunCertPathBuilder;
+import top.faroz.domain.TreeNode;
 import top.faroz.util.ParserUtil;
 import top.faroz.util.TextAreaUtil;
 
@@ -21,8 +22,19 @@ public class Parser {
      */
     //(:= a 3)
     public static void parseFunc(String func) {
-        //创建字符流
+        //1.创建字符流
         String[] strs = ParserUtil.toToken(func);
+        //2.获得语法树
+        TreeNode root = ParserUtil.buildTree(strs);
+        //3.判断语法树
+        /*
+
+            语法树的判断
+
+         */
+
+        //4.通过正确的语法树，进行计算，或者是赋值
+
 
 
     }
