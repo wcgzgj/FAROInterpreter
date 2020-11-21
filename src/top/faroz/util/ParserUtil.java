@@ -3,6 +3,10 @@ package top.faroz.util;
 import com.singularsys.jep.functions.Str;
 import top.faroz.domain.Pair;
 import top.faroz.domain.TreeNode;
+import top.faroz.exception.CalculateWrongException;
+import top.faroz.exception.DivideZeroException;
+import top.faroz.exception.NoParamException;
+import top.faroz.model.DataCache;
 import top.faroz.service.Parser;
 
 import java.util.LinkedList;
@@ -153,5 +157,49 @@ public class ParserUtil {
             if (strs[res].equals(")")) stack.pop();
         }
         return res;
+    }
+
+    /**
+     * 计算语法树的数值
+     * 这里传入的树，已经是判断好了的树了
+     * 不用再额外判断
+     * @param root
+     * @return
+     */
+    public static float calculateTreeValue(TreeNode root)
+            throws DivideZeroException, CalculateWrongException, NoParamException {
+        //计算，root的值不可是赋值符号
+        if (root.val.equals("=")) throw new CalculateWrongException();
+        //超过叶子节点 -> 虽然不可能
+        if (root==null) return 0;
+        //到达叶子节点
+        if (root.left==null && root.right==null) {
+            if (WordUtil.isNum(root.val)) {
+                return Long.parseLong(root.val);
+
+            } else {//不是数字，则代表是参数
+                //如果，之前没有创建过该变量，则报错
+                if (!DataCache.contains(root.val)) throw new NoParamException();
+                else return DataCache.getValue(root.val);
+            }
+        }
+
+        String operator = root.val;//运算符号
+        float leftVal = calculateTreeValue(root.left);
+        float rightVal = calculateTreeValue(root.right);
+        switch (operator) {
+            case "+":
+                return leftVal+rightVal;
+            case "-":
+                return leftVal-rightVal;
+            case "*":
+                return leftVal*rightVal;
+            case "/":
+                //除数不可以是0
+                if (rightVal==0) throw new DivideZeroException();
+                return leftVal/rightVal;
+            default:
+                throw new CalculateWrongException();
+        }
     }
 }

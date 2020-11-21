@@ -13,20 +13,38 @@ import java.util.HashSet;
  * @Version 1.0
  **/
 public class WordUtil {
-    static String nums="0123456789";
     static String alps="abcdefghijklmnopqrstuvwxvz" +
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static String operators="+-*/=";
     static String Bracket="()";
 
+
     /**
      * 判断该字符串是不是数字
-     * 注意,只能判断单个字符
-     * @param s
+     * @param str
      * @return
      */
-    public static boolean isNum(String s) {
-        return nums.contains(s);
+    public static boolean isNum(String str) {
+        if (str==null || str.length()==0) return false;
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+
+            try {
+                Double.parseDouble(str);
+                return true;
+
+            } catch (NumberFormatException ex) {
+
+                try {
+                    Float.parseFloat(str);
+                    return true;
+                } catch (NumberFormatException exx) {
+                    return false;
+                }
+            }
+        }
     }
 
     /**

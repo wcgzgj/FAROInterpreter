@@ -4,6 +4,7 @@ import sun.security.provider.certpath.SunCertPathBuilder;
 import top.faroz.domain.TreeNode;
 import top.faroz.util.ParserUtil;
 import top.faroz.util.TextAreaUtil;
+import top.faroz.util.TreeUtil;
 
 /**
  * @ClassName FunctionCalculate
@@ -26,21 +27,27 @@ public class Parser {
         String[] strs = ParserUtil.toToken(func);
         //2.获得语法树
         TreeNode root = ParserUtil.buildTree(strs);
-        //3.判断语法树
-        /**
-         * 语法树判断要有以下几个方面：
-         *  1.语法树的元素个数，要和token中，去除括号后的元素个数一模一样
-         *  2.语法树的非叶子节点，必须全部是运算符
-         *  3.语法树的叶子节点，必须是参数，或者是数值
-         *  4.如果语法树的根节点是"="，那么，根节点的左子树必须只能是一个元素，且该元素必须是一个参数（可以被赋值）
-         */
-        /*
-
-            语法树的判断
-
-         */
-
+        //3.判断语法树  -> 这里针对每一种错误，都会返回不同的错误提示
+        if (!TreeUtil.isElemNumOK(root,strs)) {
+            TextAreaUtil.customError("括号数或格式错误");
+            return;
+        }
+        if (!TreeUtil.isUnleafsOK(root)) {
+            TextAreaUtil.customError("运算符或格式错误");
+            return;
+        }
+        if (!TreeUtil.isLeafsOK(root)) {
+            TextAreaUtil.customError("函数格式错误");
+            return;
+        }
+        if (!TreeUtil.isGiveValOK(root)) {
+            TextAreaUtil.customError("赋值错误，被赋值对象必须是参数");
+            return;
+        }
         //4.通过正确的语法树，进行计算，或者是赋值
+
+
+
 
 
 

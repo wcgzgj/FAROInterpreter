@@ -1,5 +1,6 @@
 package top.faroz.model;
 
+import com.singularsys.jep.functions.Str;
 import com.sun.org.apache.xpath.internal.functions.FuncContains;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.Map;
  * @Date 2020/11/16 下午3:06
  * @Version 1.0
  **/
-public class NumCache {
+public class DataCache {
     private static HashMap<String,Float> map=new HashMap<>();
 
     /**
@@ -39,6 +40,10 @@ public class NumCache {
     public static boolean contains(String k) {
         if (map.containsKey(k)) return true;
         return false;
+    }
+
+    public static float getValue(String k) {
+        return map.get(k);
     }
 
 

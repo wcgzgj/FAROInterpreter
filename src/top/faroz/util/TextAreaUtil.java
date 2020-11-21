@@ -58,4 +58,13 @@ public class TextAreaUtil {
                 "     阅读标准输入格式手册");
     }
 
+    /**
+     * 在输出框中，显示自定义错误
+     */
+    public static void customError(String s) {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        taUp.append("\n     错误 , " + s +"\n"+
+                "     请输入 \"help\"，阅读标准 函数 输入格式手册");
+    }
+
 }
