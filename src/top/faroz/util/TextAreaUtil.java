@@ -1,10 +1,12 @@
 package top.faroz.util;
 
+import com.singularsys.jep.functions.Str;
 import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
 import sun.applet.Main;
 import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -49,7 +51,7 @@ public class TextAreaUtil {
     public static void functionFormatError() {
         JTextArea taUp = MainPanel.getInstance().getTaUp();
         taUp.append("\n     错误 , 函数输入错误\n" +
-                "     请输入 \"help\"，阅读标准 函数 输入格式手册");
+                "     请输入 \"format\"，阅读标准 函数 输入格式手册");
     }
 
     public static void instructionFormatError() {
@@ -63,8 +65,24 @@ public class TextAreaUtil {
      */
     public static void customError(String s) {
         JTextArea taUp = MainPanel.getInstance().getTaUp();
+        // taUp.setForeground(Color.RED);
+
         taUp.append("\n     错误 , " + s +"\n"+
-                "     请输入 \"help\"，阅读标准 函数 输入格式手册");
+                "     请输入 \"format\"，阅读标准 函数 输入格式手册");
+        // taUp.setForeground(Color.WHITE);
     }
 
+    /**
+     * 在输出框中，展示计算所得的结果
+     * @param value
+     */
+    public static void showValue(String value) {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        taUp.append("\n     "+value);
+    }
+
+    public static void customContext(String s) {
+        JTextArea taUp = MainPanel.getInstance().getTaUp();
+        taUp.append("\n     "+s);
+    }
 }

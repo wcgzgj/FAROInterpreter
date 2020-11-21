@@ -2,6 +2,10 @@ package top.faroz.service;
 
 import sun.security.provider.certpath.SunCertPathBuilder;
 import top.faroz.domain.TreeNode;
+import top.faroz.exception.CalculateWrongException;
+import top.faroz.exception.DivideZeroException;
+import top.faroz.exception.NoParamException;
+import top.faroz.model.DataCache;
 import top.faroz.util.ParserUtil;
 import top.faroz.util.TextAreaUtil;
 import top.faroz.util.TreeUtil;
@@ -45,11 +49,39 @@ public class Parser {
             return;
         }
         //4.通过正确的语法树，进行计算，或者是赋值
-
-
-
-
-
+        if (root.val.equals("=")) { //赋值
+            String param = root.left.val;
+            float res;
+            try {
+                res=ParserUtil.calculateTreeValue(root.right);
+            } catch (DivideZeroException e) {//除0
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            } catch (CalculateWrongException e) {//计算错误，可能存在格式问题
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            } catch (NoParamException e) {//被使用的参数中，有没有初始化的
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            }
+            DataCache.update(param,res);
+            TextAreaUtil.customContext(param+":"+res);
+        } else {  //计算
+            float res;
+            try {
+                res=ParserUtil.calculateTreeValue(root);
+            } catch (DivideZeroException e) {//除0
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            } catch (CalculateWrongException e) {//计算错误，可能存在格式问题
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            } catch (NoParamException e) {//被使用的参数中，有没有初始化的
+                TextAreaUtil.customError(e.getMessage());
+                return;
+            }
+            TextAreaUtil.showValue(String.valueOf(res));
+        }
 
     }
 }

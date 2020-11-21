@@ -9,6 +9,6 @@ package top.faroz.exception;
  **/
 public class NoParamException extends Exception{
     public NoParamException() {
-        super("存在未初始化的变量");
+        super("存在变量为被初始化");
     }
 }

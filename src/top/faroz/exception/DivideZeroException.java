@@ -9,6 +9,6 @@ package top.faroz.exception;
  **/
 public class DivideZeroException extends Exception{
     public DivideZeroException() {
-        super("错误，除数不可为0");
+        super("除数不可为0");
     }
 }
