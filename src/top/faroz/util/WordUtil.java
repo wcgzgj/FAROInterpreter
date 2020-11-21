@@ -17,6 +17,7 @@ public class WordUtil {
     static String alps="abcdefghijklmnopqrstuvwxvz" +
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static String operators="+-*/=";
+    static String Bracket="()";
 
     /**
      * 判断该字符串是不是数字
@@ -37,7 +38,16 @@ public class WordUtil {
         return alps.contains(s);
     }
 
+    /**
+     * 判断是不是运算符
+     * @param s
+     * @return
+     */
     public static boolean isOperator(String s) {
         return operators.contains(s);
+    }
+
+    public static boolean isBracket(String s) {
+        return Bracket.contains(s);
     }
 }
