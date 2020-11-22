@@ -175,7 +175,9 @@ public class ParserUtil {
         //到达叶子节点
         if (root.left==null && root.right==null) {
             if (WordUtil.isNum(root.val)) {
-                return Long.parseLong(root.val);
+
+                System.out.println(Float.parseFloat(root.val));
+                return Float.parseFloat(root.val);
 
             } else {//不是数字，则代表是参数
                 //如果，之前没有创建过该变量，则报错

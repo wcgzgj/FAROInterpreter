@@ -8,8 +8,7 @@ import java.util.Map;
 
 /**
  * @ClassName NumCache
- * @Description 数据区，存储和计算相关的数据
- * 并包括和计算相关的式子
+ * @Description 数据缓冲区，存储变量及其值
  * 其中维护一个 HashMap
  * @Author FARO_Z
  * @Date 2020/11/16 下午3:06

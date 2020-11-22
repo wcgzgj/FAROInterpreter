@@ -1,11 +1,13 @@
 package top.faroz.service;
 
 import top.faroz.gui.panel.MainPanel;
+import top.faroz.model.DataCache;
 import top.faroz.util.FileUtil;
 import top.faroz.util.TextAreaUtil;
 import top.faroz.util.WordUtil;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import javax.xml.soap.Text;
 
 /**
@@ -39,6 +41,9 @@ public class Analyse {
                     TextAreaUtil.appendToTaUp(FileUtil.readFile("format"));
                     break;
                 case "":
+                    break;
+                case "next":
+                    DataCache.clear();
                     break;
                 default:
                     TextAreaUtil.instructionFormatError();

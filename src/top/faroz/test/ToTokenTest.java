@@ -13,7 +13,7 @@ import java.util.Arrays;
  **/
 public class ToTokenTest {
     public static void main(String[] args) {
-        String str = "(+(* b 22)(/14 a))";
+        String str = "(+(* b 3.141)(/14 a))";
         String[] strings = ParserUtil.toToken(str);
         System.out.println(Arrays.toString(strings));
 
