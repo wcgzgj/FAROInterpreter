@@ -4,6 +4,12 @@
 
 # MyList解释器
 
+## Github项目链接
+
+https://github.com/wcgzgj/FAROInterpreter.git
+
+
+
 ## 作业要求
 
 模仿Shell的样式
@@ -20,7 +26,7 @@
 
 张健（FARO_Z）
 
-![image-20201019125418567](https://gitee.com/faro/images/raw/master/img/20201019132909.png)
+<img src="https://gitee.com/faro/images/raw/master/img/20201019132909.png" alt="image-20201019125418567" style="zoom:50%;" />
 
 ### 职责：
 
@@ -34,6 +40,16 @@
 
 ### 组员
 
+#### 组员名单
+
+> * 19180302 王硕
+> * 19180302 王越
+> * 19180323 周楷文
+> * 19180326 郭明鑫
+> * 27180119 沈若欣
+
+#### 组员职责
+
 > 五名组员自行fork主程序
 >
 > 并在发现bug或者有修改建议的时候
@@ -46,7 +62,29 @@
 
 ## 运行界面
 
-![开始界面.jpg](https://gitee.com/faro/images/raw/master/img/20201120165421.jpg)
+* **开始界面**
+
+<img src="https://gitee.com/faro/images/raw/master/img/20201120165421.jpg" alt="开始界面.jpg" style="zoom:30%;" />
+
+* **输入基本指令**
+
+  <img src="https://gitee.com/faro/images/raw/master/img/20201123102649.png" alt="image-20201123102104606" style="zoom:33%;" />
+
+* **赋值**
+
+  <img src="https://gitee.com/faro/images/raw/master/img/20201123102700.png" alt="image-20201123102155884" style="zoom:33%;" />
+
+* **复杂公式的计算**
+
+<img src="https://gitee.com/faro/images/raw/master/img/20201123102652.png" alt="image-20201123102250131" style="zoom:33%;" />
+
+* **不同错误的判断**
+
+<img src="https://gitee.com/faro/images/raw/master/img/20201123102706.png" alt="image-20201123102351216" style="zoom:33%;" />
+
+* **组员名单**
+
+  <img src="https://gitee.com/faro/images/raw/master/img/20201123102711.png" alt="image-20201123102423380" style="zoom:33%;" />
 
 
 
@@ -109,5 +147,13 @@
    > 根节点必须是赋值符号 “=” 
    >
    > <img src="https://gitee.com/faro/images/raw/master/img/20201120173313.png" alt="image-20201120172612909" style="zoom:50%;" />
+   >
+   > 还需要<font color="red">额外判断</font>的项目有：
+   >
+   > ​	1. 语法树中的节点个数，是不是和token流中，除去了左右括号后，元素的个数一样（如果前者比后者少，说明token流错误）
 
 
+
+## 遇到的问题及挑战
+
+> 程序设计过程中，最难的部分，是对输入的判断和算法的设计。后来，是通过对解释器和语法树研究，才成功设计出该程序的核心算法
