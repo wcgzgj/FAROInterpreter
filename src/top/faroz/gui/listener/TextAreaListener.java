@@ -31,7 +31,6 @@ public class TextAreaListener implements KeyListener {
         JTextArea taDown = mainPanel.getTaDown();
         JTextArea taUp = mainPanel.getTaUp();
         int code = e.getKeyCode();
-        System.out.println(code);
 
         switch (code) {
             //回车键
