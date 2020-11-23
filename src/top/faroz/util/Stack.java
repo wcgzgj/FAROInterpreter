@@ -17,6 +17,7 @@ public class Stack<T> {
     }
 
     public T pop() {
+        if (list.isEmpty()) return null;
         return list.removeLast();
     }
 

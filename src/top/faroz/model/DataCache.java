@@ -2,9 +2,9 @@ package top.faroz.model;
 
 import com.singularsys.jep.functions.Str;
 import com.sun.org.apache.xpath.internal.functions.FuncContains;
+import top.faroz.exception.StackEmptyException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName NumCache
@@ -16,6 +16,9 @@ import java.util.Map;
  **/
 public class DataCache {
     private static HashMap<String,Float> map=new HashMap<>();
+    //下面这两个数据区的数据会一直存在，直到程序关闭
+    private static Stack<String> preStack=new Stack<>();//存放初始输入的字符
+    private static Stack<String> nextStack=new Stack<>();//存放按上方向键后，出栈的字符
 
     /**
      * 更新键值对
@@ -34,6 +37,11 @@ public class DataCache {
      */
     public static void clear() {
         map.clear();
+        while (!nextStack.isEmpty()) {
+            //每次在开始下一个程序之前，
+            // 都要将之前在nextStack中的内容再次放回preStack中
+            preStack.push(nextStack.pop());
+        }
     }
 
     public static boolean contains(String k) {
@@ -45,7 +53,27 @@ public class DataCache {
         return map.get(k);
     }
 
+    public static void addInput(String s) {
+        while (!nextStack.isEmpty()) {
+            //每次在新增输入之前
+            // 都要将之前在nextStack中的内容再次放回preStack中
+            preStack.push(nextStack.pop());
+        }
+        preStack.push(s);
+    }
 
+    public static String getPre() throws StackEmptyException {
+        if (preStack.size()<=0) throw new StackEmptyException();
+        String tmp = preStack.pop();
+        nextStack.push(tmp);
+        return tmp;
+    }
 
+    public static String getNext() throws StackEmptyException {
+        if (nextStack.size()<=0) throw new StackEmptyException();
+        String tmp = nextStack.pop();
+        preStack.push(tmp);
+        return tmp;
+    }
 
 }

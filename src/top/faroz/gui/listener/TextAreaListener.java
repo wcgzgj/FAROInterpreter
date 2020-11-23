@@ -1,6 +1,8 @@
 package top.faroz.gui.listener;
 
+import top.faroz.exception.StackEmptyException;
 import top.faroz.gui.panel.MainPanel;
+import top.faroz.model.DataCache;
 import top.faroz.service.Analyse;
 
 import javax.swing.*;
@@ -29,6 +31,7 @@ public class TextAreaListener implements KeyListener {
         JTextArea taDown = mainPanel.getTaDown();
         JTextArea taUp = mainPanel.getTaUp();
         int code = e.getKeyCode();
+        System.out.println(code);
 
         switch (code) {
             //回车键
@@ -41,6 +44,8 @@ public class TextAreaListener implements KeyListener {
 
                 //显示用户输入的指令
                 taUp.append("\n > "+text);
+                //将输入存放到数据缓冲区
+                DataCache.addInput(text);
 
                 //处理指令或者函数
                 //并对用户的输入做出相应
@@ -52,6 +57,27 @@ public class TextAreaListener implements KeyListener {
 
                 //清空输入框
                 taDown.setText("");
+
+                break;
+
+            case 38:// 上方向键
+                taDown.setText("");
+                try {
+                    String tmp = DataCache.getPre();
+                    taDown.setText(tmp);
+                } catch (StackEmptyException stackEmptyException) {
+                    stackEmptyException.printStackTrace();
+                }
+                break;
+            case 40://下方向键
+                taDown.setText("");
+                try {
+                    String tmp = DataCache.getNext();
+                    taDown.setText(tmp);
+                } catch (StackEmptyException stackEmptyException) {
+                    stackEmptyException.printStackTrace();
+                }
+                break;
         }
     }
 
