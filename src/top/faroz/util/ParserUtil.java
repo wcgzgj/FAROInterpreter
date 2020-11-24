@@ -1,15 +1,11 @@
 package top.faroz.util;
 
-import com.singularsys.jep.functions.Str;
 import top.faroz.domain.Pair;
 import top.faroz.domain.TreeNode;
 import top.faroz.exception.CalculateWrongException;
 import top.faroz.exception.DivideZeroException;
 import top.faroz.exception.NoParamException;
 import top.faroz.model.DataCache;
-import top.faroz.service.Parser;
-
-import java.util.LinkedList;
 
 /**
  * @ClassName ParserUtil

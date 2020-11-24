@@ -4,7 +4,6 @@ import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
 
 /**
  * @ClassName MainFrame

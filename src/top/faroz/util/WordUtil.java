@@ -1,9 +1,6 @@
 package top.faroz.util;
 
-import com.singularsys.jep.functions.Str;
 
-import java.io.PushbackInputStream;
-import java.util.HashSet;
 
 /**
  * @ClassName NumUtil

@@ -1,7 +1,4 @@
 package top.faroz.model;
-
-import com.singularsys.jep.functions.Str;
-import com.sun.org.apache.xpath.internal.functions.FuncContains;
 import top.faroz.exception.StackEmptyException;
 
 import java.util.*;

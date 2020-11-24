@@ -1,12 +1,7 @@
 package top.faroz.util;
-
-import com.singularsys.jep.functions.Str;
-import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
-import sun.applet.Main;
 import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 /**

@@ -1,10 +1,7 @@
 package top.faroz.gui.panel;
-
-import sun.applet.Main;
 import top.faroz.gui.listener.TextAreaListener;
 
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
 import java.awt.*;
 
 /**

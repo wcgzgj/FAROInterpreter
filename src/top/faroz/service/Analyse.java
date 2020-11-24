@@ -7,8 +7,6 @@ import top.faroz.util.TextAreaUtil;
 import top.faroz.util.WordUtil;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
-import javax.xml.soap.Text;
 
 /**
  * @ClassName InstructionAnalyse

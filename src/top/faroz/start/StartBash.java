@@ -4,7 +4,6 @@ import top.faroz.gui.frame.MainFrame;
 import top.faroz.gui.panel.MainPanel;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @ClassName StartBash
