@@ -38,6 +38,9 @@ public class Analyse {
                 case "format":
                     TextAreaUtil.appendToTaUp(FileUtil.readFile("format"));
                     break;
+                case "nobug":
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("nobug"));
+                    break;
                 case "":
                     break;
                 case "next":
