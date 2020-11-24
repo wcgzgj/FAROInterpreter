@@ -114,6 +114,7 @@ public class TreeUtil {
         list.removeAll(remove);
 
         //获取语法树的节点个数
+        if (root==null && strs.length!=0) return false;
         int treeNodeNum=getLeafs(root).size()+getUnLeafs(root).size();
         //如果二者数量不相等，说明输入的函数是错误的
         if (treeNodeNum!=list.size()) return false;
