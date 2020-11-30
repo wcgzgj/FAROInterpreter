@@ -56,7 +56,10 @@ public class DataCache {
             // 都要将之前在nextStack中的内容再次放回preStack中
             preStack.push(nextStack.pop());
         }
-        preStack.push(s);
+        //这样，就不会把只回车的空内容存入栈里了
+        if (s.length()>0) {
+            preStack.push(s);
+        }
     }
 
     public static String getPre() throws StackEmptyException {

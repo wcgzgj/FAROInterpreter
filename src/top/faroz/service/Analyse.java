@@ -41,6 +41,12 @@ public class Analyse {
                 case "nobug":
                     TextAreaUtil.appendToTaUp(FileUtil.readFile("nobug"));
                     break;
+                case "goddness":
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("goddness"));
+                    break;
+                case "pig":
+                    TextAreaUtil.appendToTaUp(FileUtil.readFile("pig"));
+                    break;
                 case "":
                     break;
                 case "next":
